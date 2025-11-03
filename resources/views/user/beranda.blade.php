@@ -51,7 +51,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="ratio ratio-16x9 shadow-sm rounded">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/QDBWsQHC-6U?si=2GcKONhUCsocZXiF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="{{ $profiledesa->link_video_profile }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
