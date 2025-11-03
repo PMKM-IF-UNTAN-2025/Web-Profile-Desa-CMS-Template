@@ -8,6 +8,15 @@
                 <div class="text-center">
                     <h2 class="text-banner-h2">Selamat Datang di</h2>
                     <h2 class="text-banner-h1">Website Desa Perapakan</h2>
+                    @php
+                        function youtubeEmbed($url) {
+                            return preg_replace(
+                                "/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/",
+                                "https://www.youtube.com/embed/$1",
+                                $url
+                            );
+                        }
+                    @endphp
                 </div>
             </div>
         </div>
