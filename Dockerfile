@@ -24,9 +24,27 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 # Install dependencies Laravel
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Pastikan folder penting bisa ditulis Apache
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
-    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+# Pastikan folder penting ada (jika belum dibuat oleh repo) dan bisa ditulis Apache,
+# lalu buat symlink public/storage -> ../storage/app/public (mengikuti perintah yang kamu minta)
+RUN set -eux; \
+    # buat direktori storage yang diperlukan jika belum ada
+    mkdir -p storage/app/public storage/framework/cache storage/framework/sessions storage/framework/views storage/logs public/uploads; \
+    # hapus jika ada file atau symlink lama di public/storage
+    rm -f public/storage || true; \
+    # buat symlink relative dari public ke storage/app/public
+    ln -s ../storage/app/public public/storage || true; \
+    # tampilkan listing & resolve link (berguna saat build logs)
+    ls -la public | grep storage || true; \
+    readlink public/storage || readlink -f public/storage || true; \
+    # set owner & permission untuk storage dan link
+    chown -R www-data:www-data storage public/storage public/uploads; \
+    # set permission directories dan file pada storage
+    find storage -type d -exec chmod 755 {} \; ; \
+    find storage -type f -exec chmod 644 {} \; ; \
+    # optional: beri write ke storage/app/public jika aplikasi perlu upload
+    chmod -R u+w storage/app/public; \
+    # set permission untuk public/uploads (untuk upload langsung ke public/uploads)
+    chmod -R 755 public/uploads
 
 # Aktifkan mod_rewrite agar route Laravel berfungsi
 RUN a2enmod rewrite
@@ -37,10 +55,6 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 
 # Port default Apache
 EXPOSE 80
-
-# # Tambahkan healthcheck agar mudah monitor container
-# HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
-#   CMD curl -f http://localhost/ || exit 1
 
 # Jalankan Apache
 CMD ["apache2-foreground"]
