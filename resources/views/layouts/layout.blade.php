@@ -113,9 +113,7 @@
                 <!-- About Section -->
                 <div class="col-md-4 mb-4">
                     <h5 class="text-uppercase">Tentang Desa</h5>
-                    <p>
-                        Perapakan adalah salah satu desa yang berada Kecamatan Pemangkat, Kabupaten Sambas.
-                    </p>
+                    <p id="tentang-desa"></p>
                 </div>
                 <!-- Quick Links Section -->
                 <div class="col-md-4 mb-4">
@@ -130,14 +128,14 @@
                 <div class="col-md-4 mb-4">
                     <h5 class="text-uppercase">Hubungi Kami</h5>
                     <p>
-                        <i class="fas fa-phone-alt me-2"></i>{{ $kontak->no_hp }}<br>
-                        <i class="fas fa-envelope me-2"></i>{{ $kontak->email }}<br>
-                        <i class="fas fa-map-marker-alt me-2"></i>Jalan Mohammad.Sohor No.35 A Pemangkat
+                        <i class="fas fa-phone-alt me-2"></i><span id="no-hp"></span><br>
+                        <i class="fas fa-envelope me-2"></i><span id="email"></span><br>
+                        <i class="fas fa-map-marker-alt me-2"></i><span id="alamat"></span>                    
                     </p>
                     <div>
-                        <a href="{{ $kontak->url_fb }}" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="{{ $kontak->url_ig }}" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="{{ $kontak->url_yt }}" class="text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-white d-none"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white d-none"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white d-none"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -235,15 +233,15 @@
 
     });
 
-    async function applyConfig(config) {
+        async function applyConfig(config) {
         const { colors, images, texts } = config;
 
         // Apply colors
         if (colors) {
-            document.documentElement.style.setProperty('--pr-color','rgb(' + colors.pr_color + ')');
-            document.documentElement.style.setProperty('--sec-color','rgb(' + colors.sec_color + ')');
-            document.documentElement.style.setProperty('--third-color','rgb(' + colors.third_color + ')');
-            document.documentElement.style.setProperty('--base-color','rgb(' + colors.base_color + ')');
+            document.documentElement.style.setProperty('--pr-color', 'rgb(' + colors.pr_color + ')');
+            document.documentElement.style.setProperty('--sec-color', 'rgb(' + colors.sec_color + ')');
+            document.documentElement.style.setProperty('--third-color', 'rgb(' + colors.third_color + ')');
+            document.documentElement.style.setProperty('--base-color', 'rgb(' + colors.base_color + ')');
         }
 
         // Apply images
@@ -253,7 +251,36 @@
         // Apply texts
         document.querySelectorAll('.nama_desa').forEach(el => el.textContent = texts?.nama_desa ?? 'Desa Default');
         document.querySelectorAll('.nama_kecamatan').forEach(el => el.textContent = texts?.nama_kecamatan ?? 'Kecamatan Default');
-        
+
+        const tentangDesaEl = document.getElementById('tentang-desa');
+        if (tentangDesaEl && texts) tentangDesaEl.textContent = texts.tentang_desa;
+
+        const noHpEl = document.getElementById('no-hp');
+        if (noHpEl && texts) noHpEl.textContent = texts.whatsapp;
+
+        const emailEl = document.getElementById('email');
+        if (emailEl && texts) emailEl.textContent = texts.email;
+
+        const alamatEl = document.getElementById('alamat');
+        if (alamatEl && texts) alamatEl.textContent = texts.alamat;
+
+        const fbLink = document.querySelector('a i.fab.fa-facebook-f')?.parentElement;
+        const igLink = document.querySelector('a i.fab.fa-instagram')?.parentElement;
+        const ytLink = document.querySelector('a i.fab.fa-youtube')?.parentElement;
+
+        if (texts?.facebook && fbLink) {
+            fbLink.href = texts.facebook;
+            fbLink.classList.remove('d-none');
+        }
+        if (texts?.instagram && igLink) {
+            igLink.href = texts.instagram;
+            igLink.classList.remove('d-none');
+        }
+        if (texts?.youtube && ytLink) {
+            ytLink.href = texts.youtube;
+            ytLink.classList.remove('d-none');
+        }
+
         // Update page title
         const pageTitle = document.getElementById('page_title');
         if (pageTitle && texts) pageTitle.textContent = texts.nama_desa ?? 'Desa Default';
@@ -262,6 +289,7 @@
         const footerNama = document.getElementById('nama_desa');
         if (footerNama && texts) footerNama.textContent = texts.nama_desa;
     }
+
 
     async function loadConfig() {
         const cached = sessionStorage.getItem('site_config');

@@ -79,7 +79,7 @@
                          <div class="col-12">
                             <div class="card" id="daftardesaCard">
                                 <div class="card-body">
-                                    <h5>Kelola Nama Desa dan Kecamatan
+                                    <h5>Kelola Text Dasar
                                         <hr>
                                     </h5>
                                     <!-- Form Input Kegiatan -->
@@ -89,17 +89,59 @@
                                             <div class="col-md-6 col-sm-12">
                                                <div class="form-group">
                                                  <label for="nama_desa" class="form-label">
-                                                        Nama Desa:</label>
+                                                        Nama Desa : <span class="text-danger">*</span></label>
                                                         <input name="nama_desa" type="text" class="form-control" id="nama_desa" required value="{{$texts ? $texts->nama_desa : ""}}">
+                                                        <span class="text-small">Hanya perlu menginputkan nama desa tanpa ada kata "Desa"</span>
                                                 </div> 
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                <div class="form-group">
                                                  <label for="nama_kecamatan" class="form-label">
-                                                        Nama Kecamatan:</label>
+                                                        Nama Kecamatan: <span class="text-danger">*</span></label>
                                                         <input name="nama_kecamatan" type="text" class="form-control" id="nama_kecamatan" required value="{{$texts ? $texts->nama_kecamatan : ""}}">
+                                                        <span class="text-small">Hanya perlu menginputkan nama kecamatan tanpa ada kata "Desa"</span>
                                                 </div>
-                                        </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="form-group">
+                                                    <label for="tentang_desa" class="form-label">Tentang Desa <span class="text-danger">*</span></label>
+                                                    <textarea name="tentang_desa" id="summernote-tentang" required> {{$texts ? $texts->tentang_desa : ""}}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                               <div class="form-group">
+                                                 <label for="whatsapp" class="form-label">
+                                                        No. Telp / Whatsapp: </label>
+                                                        <input name="whatsapp" type="text" class="form-control" id="whatsapp" value="{{$texts ? $texts->whatsapp : ""}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                               <div class="form-group">
+                                                 <label for="gmail" class="form-label">
+                                                        Email :</label>
+                                                        <input name="gmail" type="text" class="form-control" id="gmail" value="{{$texts ? $texts->gmail : ""}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                               <div class="form-group">
+                                                 <label for="alamat" class="form-label">
+                                                        Alamat:<span class="text-danger">*</span></label>
+                                                        <input name="alamat" type="text" class="form-control" id="alamat" required value="{{$texts ? $texts->alamat : ""}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                               <div class="form-group">
+                                                 <label for="facebook" class="form-label">
+                                                        facebook :</label>
+                                                        <input name="facebook" type="text" class="form-control" id="facebook" value="{{$texts ? $texts->facebook : ""}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="instagram">Instagram:</label>
+                                                    <input name="instagram" type="text" class="form-control" id="instagram" value="{{$texts ? $texts->instagram : ""}}">
+                                                </div>
+                                            </div>
                                         <div class="d-flex justify-content-end mt-4">
                                             <button type="submit" class="btn btn-simpan">Simpan</button>
                                             <button type="button" onclick="resetForm()"
@@ -271,6 +313,18 @@
                         alert('Terjadi kesalahan saat menyimpan logo desa.');
                     }
                 });
+            });
+            $('#summernote-tentang').summernote({
+                height: 200,
+                tabsize: 2,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
             });
         });
     </script>

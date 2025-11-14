@@ -63,7 +63,7 @@ class ProfildesaController
                 'sejarah_desa' => 'required',
                 'visi_desa' => 'required',
                 'misi_desa' => 'required',
-                'link_video_profile' => 'required',
+                'link_video_profile' => '',
 
                 'total_jiwa' => 'required',
                 'total_kk' => 'required',

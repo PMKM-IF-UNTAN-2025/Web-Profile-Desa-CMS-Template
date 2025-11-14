@@ -47,7 +47,7 @@
                                                 class="col-lg-2 col-md-3 col-sm-4 form-label">Foto:</label>
                                             <div class="col-lg-10 col-md-9 col-sm-8">
                                                 <input type="file" name="gambar_lembaga" class="form-control"
-                                                    id="foto" accept="image/*" required>
+                                                    id="foto" accept="image/*">
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end mt-4">
