@@ -17,7 +17,7 @@
         <div class="container transition-container">
             <div class="row text-center mb-5">
                 <h2 class="fw-bold">Informasi Layanan</h2>
-                <p class="text-muted">Pelayanan administrasi yang tersedia di Desa Perapakan.</p>
+                <p class="text-muted">Pelayanan administrasi yang tersedia di <span id="nama_desa"></span>.</p>
             </div>
             <div class="row g-4">
                 @foreach ($layananadministrasis as $item)
