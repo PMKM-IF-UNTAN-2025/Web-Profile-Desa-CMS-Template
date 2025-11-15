@@ -460,7 +460,7 @@ footer .social-icons a:hover {
   width: 530px;
   max-height: 388px;
   border-radius: 30px;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 5px solid #8da9c5;
   -webkit-border-radius: 30px;
@@ -1226,7 +1226,7 @@ a.sidebar-link.active {
 .lembaga-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 } */
 
 .lembaga-card {
@@ -1248,7 +1248,7 @@ a.sidebar-link.active {
 }
 
 .lembaga-img {
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
 }
 
@@ -1306,7 +1306,7 @@ a.sidebar-link.active {
 .card-kegiatan img {
   width: 100%;
   height: 300px; /* Atur tinggi gambar sesuai kebutuhan */
-  object-fit: cover; /* Memastikan gambar tetap proporsional */
+  object-fit: contain; /* Memastikan gambar tetap proporsional */
   padding: 10px; /* Berikan jarak di dalam card */
   border-radius: 8px; /* Opsional, agar terlihat lebih estetis */
 }

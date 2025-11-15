@@ -1,4 +1,14 @@
 @extends('layouts.adminlayout')
+@section('kodeatas')
+<style>
+       #baseLogo .dropify-wrapper p{
+            color: var(--sec-color);
+            font-family: var(--sec-font);
+            line-height: 1.7;
+            font-size: 12px;
+        }
+    </style>
+@endsection
 @section('child')
     <main class="content px-3 py-2">
         <div class="container-fluid" id="admin-profile-desa">
@@ -37,9 +47,13 @@
                             <div class="form-group row mb-3">
                                 <label class="col-lg-2 col-md-3 col-sm-4 form-label">Foto:</label>
                                 <div class="col-lg-10 col-md-9 col-sm-8">
+                                    @if($profiledesa && $profiledesa->gambar_profiledesa)
                                     <img src="{{ asset('storage/' . $profiledesa->gambar_profiledesa) }}"
                                         alt="Foto Profil Desa" class="img-thumbnail"
                                         style="max-width: 500px; height: auto;">
+                                    @else
+                                    Data Foto Belum Tersedia
+                                    @endif
                                 </div>
                             </div>
 
@@ -47,7 +61,7 @@
                             <div class="form-group row mb-3">
                                 <label class="col-lg-2 col-md-3 col-sm-4 form-label">Sejarah:</label>
                                 <div class="col-lg-10 col-md-9 col-sm-8">
-                                    {!! $profiledesa->sejarah_desa !!}
+                                    {!! $profiledesa?->sejarah_desa !!}
                                 </div>
                             </div>
 
@@ -55,7 +69,7 @@
                             <div class="form-group row mb-3">
                                 <label class="col-lg-2 col-md-3 col-sm-4 form-label">Visi:</label>
                                 <div class="col-lg-10 col-md-9 col-sm-8">
-                                    {{ $profiledesa->visi_desa }}
+                                    {{ $profiledesa?->visi_desa }}
                                 </div>
                             </div>
 
@@ -63,7 +77,7 @@
                             <div class="form-group row mb-3">
                                 <label class="col-lg-2 col-md-3 col-sm-4 form-label">Misi:</label>
                                 <div class="col-lg-10 col-md-9 col-sm-8">
-                                    {!! $profiledesa->misi_desa !!}
+                                    {!! $profiledesa?->misi_desa !!}
                                 </div>
                             </div>
 
@@ -466,7 +480,7 @@
                                                     <div class="row gx-3 gy-2">
                                                         <div class="col-lg-2 col-md-3">
                                                             <label for="luas_desa" class="form-label">Luas Desa</label>
-                                                            <input type="number" class="form-control" name="luas_desa"
+                                                            <input type="float" class="form-control" name="luas_desa"
                                                                 value="{{ $profiledesa->luas_desa }}" placeholder=""
                                                                 min="0">
                                                         </div>
@@ -494,15 +508,53 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row mt-3 mb-3">
+                                                <div class="col-lg-2 col-md-3">
+                                                   <label for="peta">Jenis Peta</label> 
+                                                </div>
+                                                <div class="col-lg-10 col-md-9 col-sm-8">
+                                                    <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jenis_peta" id="petaDesa1" 
+                                                    {{ $profiledesa->jenis_peta === 'maps' ? 'checked' : '' }} value="maps">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        Google Maps
+                                                    </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jenis_peta" id="petaDesa2"
+                                                    {{ $profiledesa->jenis_peta === 'foto' ? 'checked' : '' }} value="foto">
+                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                        Foto
+                                                    </label>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <!-- Peta Desa -->
-                                            <div class="form-group row mt-3 mb-3">
+                                            <div class="form-group row mt-3 mb-3 peta_maps">
                                                 <label for="petaDesa" class="col-lg-2 col-md-3 col-sm-4 form-label">Peta
                                                     Desa:</label>
                                                 <div class="col-lg-10 col-md-9 col-sm-8">
                                                     <input type="text" class="form-control" id="petaDesa"
                                                         placeholder="Masukkan tautan alamat peta Desa" name="peta_desa"
-                                                        required value="{{ $profiledesa->peta_desa }}">
+                                                        value="{{ $profiledesa->peta_desa }}">
+                                                        <span class="text-small text-danger">
+                                                            Masukkan tautan embed dari Google Maps untuk peta Desa.
+                                                        </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row mt-3 mb-3 peta_foto" style="display: none;">
+                                                <label for="petaDesa" class="col-lg-2 col-md-3 col-sm-4 form-label">Peta
+                                                    Desa:</label>
+                                                <div class="col-lg-10 col-md-9 col-sm-8">
+                                                    <input type="file" id="peta_desa_foto" name="peta_desa"
+                                                        class="dropify" data-height="150"
+                                                        data-default-file="{{ asset('storage/' . $profiledesa->peta_desa) }}"/>
+                                                        <span class="text-small text-danger" accept=".jpg,.jpeg,.png" data-max-filesize="1M">
+                                                            1. Maksimal ukuran file 1 MB.<br>
+                                                            2. Format file yang diperbolehkan: jpg, jpeg, png.
+                                                        </span>
                                                 </div>
                                             </div>
 
@@ -547,5 +599,27 @@
                 reader.readAsDataURL(file);
             }
         }
+        $(document).ready(function() {
+            $('.dropify').dropify();
+            // Cek nilai awal dan tampilkan/ sembunyikan sesuai kondisi
+            if ($('#petaDesa1').is(':checked')) {
+                $('.peta_maps').show();
+                $('.peta_foto').hide();
+            } else if ($('#petaDesa2').is(':checked')) {
+                $('.peta_maps').hide();
+                $('.peta_foto').show();
+            }
+
+            // Tambahkan event listener untuk perubahan pilihan radio button
+            $('input[name="jenis_peta"]').change(function() {
+                if ($(this).attr('id') === 'petaDesa1') {
+                    $('.peta_maps').show();
+                    $('.peta_foto').hide();
+                } else if ($(this).attr('id') === 'petaDesa2') {
+                    $('.peta_maps').hide();
+                    $('.peta_foto').show();
+                }
+            });
+        });
     </script>
 @endsection

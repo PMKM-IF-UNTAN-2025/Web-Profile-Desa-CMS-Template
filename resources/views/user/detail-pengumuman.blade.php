@@ -28,7 +28,7 @@
                     src="{{ asset('storage/' . $pengumuman->gambar_pengumuman) }}" 
                     alt="Gambar Pengumuman" 
                     class="card-img-top" 
-                    style="object-fit: cover; width: 100%; height: auto; max-height: 400px; border-radius: 10px 10px 0 0;">
+                    style="object-fit: contain; width: 100%; height: auto; max-height: 400px; border-radius: 10px 10px 0 0;">
                 @endif
                 <div class="card-body" style="padding: 20px;">
                     <p class="card-text" style="font-size: 1rem; line-height: 1.7; color: #555;">

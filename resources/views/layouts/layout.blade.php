@@ -18,6 +18,7 @@
             border-radius: 15px !important;
         }  
     </style>
+    @yield('kodecssenduser')
 </head>
 
 <body>

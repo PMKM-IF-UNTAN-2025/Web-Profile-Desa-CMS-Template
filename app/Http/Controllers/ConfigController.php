@@ -32,7 +32,7 @@ class ConfigController
                 'texts' => [
                     'nama_desa' => "Desa ".$texts->nama_desa ?? 'Default',
                     'nama_kecamatan' => "Kecamatan ".$texts->nama_kecamatan ?? 'Kecamatan Default',
-                    'tentang_desa'=>$texts->tentang_desa ?? "Berawal dari ...",
+                    'tentang_desa'=>$texts->tentang_desa ?? "Data Belum Tersedia",
                     'whatsapp'=>$texts->whatsapp ?? "-",
                     'email'=>$texts->gmail ?? "-",
                     'alamat'=>$texts->alamat ?? "-",
