@@ -20,28 +20,44 @@
             <h2 class="subjudul mb-4 text-center fw-bold">Tentang <span class="nama_desa"></span></h2>
             <div class="row align-items-center">
                 <!-- Image Content -->
-                <div class="col-lg-6">
-                    <div class="image-container position-relative overflow-hidden rounded shadow">
+                @if($profiledesa)
+                    <div class="col-lg-6">
+                        {{$profiledesa->gambar_profiledesa}}
+                        @if($profiledesa->gambar_profiledesa)
                         <img src="{{ asset('storage/' . $profiledesa->gambar_profiledesa) }}" 
-                             class="img-fluid rounded"
-                             alt="Gambar Profil Desa"
-                             style="object-fit: cover; width: 100%; max-height: 400px; transition: transform 0.3s;">
+                            alt="Gambar Profil Desa" 
+                            class="img-fluid rounded shadow-sm"
+                            style="max-height: 400px; object-fit: contain; object-position: center;">
+                        @else
+                        <div class="d-flex justify-content-center align-items-center bg-light rounded shadow-sm"
+                            style="height: 400px;">
+                            <img src="{{asset('/image/default.jpg')}}" alt="" 
+                                class="img-fluid rounded"
+                                style="max-height: 400px; object-fit: contain; object-position: center;">
+                        </div>
+                        @endif
                     </div>
-                </div>
+                    <div class="col-lg-6">
+                        <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
+                            {!! \Illuminate\Support\Str::limit($profiledesa->sejarah_desa, 700) !!}
+                        </p>
+                        <a href="/profile-desa"
+                            class="text-white mt-4 px-4 py-2 d-inline-flex align-items-center shadow-sm"
+                            style="background-color: var(--pr-color); color: white; font-size: 1rem;  
+                                border-radius: 0.5rem; transition: background-color 0.3s, transform 0.2s; 
+                                text-decoration: none;">
+                            <i class="fas fa-info-circle me-2"></i> Selengkapnya
+                        </a>
+                    </div>
+                    @else
+                    <div class="col-12">
+                        <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
+                            Data Profil Desa Belum Tersedia.
+                        </p>
+                    </div>
+                @endif
 
                 <!-- Text Content -->
-                <div class="col-lg-6">
-                    <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
-                        {!! \Illuminate\Support\Str::limit($profiledesa->sejarah_desa, 700) !!}
-                    </p>
-                    <a href="/profile-desa"
-                        class="text-white mt-4 px-4 py-2 d-inline-flex align-items-center shadow-sm"
-                        style="background-color: var(--pr-color); color: white; font-size: 1rem;  
-                               border-radius: 0.5rem; transition: background-color 0.3s, transform 0.2s; 
-                               text-decoration: none;">
-                        <i class="fas fa-info-circle me-2"></i> Selengkapnya
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -54,26 +70,30 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="ratio ratio-16x9 shadow-sm rounded">
-                        @php
-                        function youtubeEmbed($url) {
-                            // Untuk format YouTube short dan biasa
-                            if (str_contains($url, 'youtu.be')) {
+                        @if(!$profiledesa || !$profiledesa->link_video_profile)
+                            <p class="text-center text-muted">Video profile desa belum tersedia.</p>
+                        @else
+                            @php
+                            function youtubeEmbed($url) {
+                                // Untuk format YouTube short dan biasa
+                                if (str_contains($url, 'youtu.be')) {
+                                    return preg_replace(
+                                        "/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/",
+                                        "https://www.youtube.com/embed/$1",
+                                        $url
+                                    );
+                                }
+
                                 return preg_replace(
-                                    "/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([a-zA-Z0-9_-]+)/",
+                                    "/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/",
                                     "https://www.youtube.com/embed/$1",
                                     $url
                                 );
                             }
-
-                            return preg_replace(
-                                "/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/",
-                                "https://www.youtube.com/embed/$1",
-                                $url
-                            );
-                        }
-                        @endphp
-
+                            @endphp
                         <iframe width="560" height="315" src="{{youtubeEmbed($profiledesa->link_video_profile)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -87,7 +107,7 @@
             <div class="row mb-4 justify-content-center text-center">
                 <div class="col-12">
                     <h2 class="subjudul fw-bold">Perangkat Desa</h2>
-                    <p class="text-muted">Berkenalan dengan perangkat desa yang mendukung kemajuan Desa <span class="nama_desa"></span>.</p>
+                    <p class="text-muted">Berkenalan dengan perangkat desa yang mendukung kemajuan <span class="nama_desa"></span>.</p>
                 </div>
             </div>
 
@@ -110,10 +130,17 @@
                                 @foreach ($chunk as $perangkatdesa)
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                         <div class="card shadow-sm border-0 rounded h-100">
+                                            @if($perangkatdesa->gambar_perangkatdesa)
                                             <img src="{{ asset('storage/' . $perangkatdesa->gambar_perangkatdesa) }}"
                                                  alt="{{ $perangkatdesa->jabatan }}" 
                                                  class="card-img-top rounded-top"
-                                                 style="height: 350px; object-fit: cover; object-position: center;">
+                                                 style="height: 350px; object-fit: contain; object-position: center;">
+                                            @else
+                                            <div class="d-flex justify-content-center align-items-center bg-light rounded-top"
+                                                style="height: 350px;">
+                                                <i class="fas fa-image text-muted" style="font-size: 4rem;"></i>
+                                            </div>
+                                            @endif
                                             <div class="card-body text-center">
                                                 <h3 class="card-title fw-bold">{{ $perangkatdesa->nama }}</h3>
                                                 <p class="card-text text-muted">{{ $perangkatdesa->jabatan }}</p>
@@ -150,7 +177,7 @@
                         <a href="/detail-pengumuman/{{ $item->id }}" class="text-decoration-none">
                             <div class="card shadow-sm border-0 h-100">
                                 <img src="{{ asset('storage/' . $item->gambar_pengumuman) }}"
-                                    style="height: 200px; object-fit: cover; object-position: center;"
+                                    style="height: 200px; object-fit: contain; object-position: center;"
                                     class="card-img-top rounded-top">
                                 <div class="card-body d-flex flex-column p-3">
                                     <div class="d-flex justify-content-between text-muted mb-2" style="font-size: 0.8rem;">

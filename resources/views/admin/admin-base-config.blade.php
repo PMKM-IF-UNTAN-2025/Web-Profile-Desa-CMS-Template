@@ -9,6 +9,7 @@
             font-size: 16px;
         }
     </style>
+@endsection
 @section('child')
     <main class="content px-3 py-2">
         <div class="container-fluid" id="admin-kegiatan">

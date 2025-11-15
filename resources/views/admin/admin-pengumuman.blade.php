@@ -39,7 +39,7 @@
                                     <label for="gambarPengumuman" class="col-lg-2 col-md-3 col-sm-4 form-label">Unggah Gambar:</label>
                                     <div class="col-lg-10 col-md-9 col-sm-8">
                                         <input name="gambar_pengumuman" type="file" class="form-control"
-                                            id="gambarPengumuman" accept="image/*">
+                                            id="gambarPengumuman" accept="image/*" required>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end mt-4">

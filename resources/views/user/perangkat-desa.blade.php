@@ -18,7 +18,7 @@
             <!-- Image Section -->
             <div class="d-flex justify-content-center mb-4">
                 <img src="{{ asset('storage/' . $strukturperangkatdesa->gambar_strukturdesa) }}" alt="Desa Image"
-                    class="img-fluid rounded" style="object-fit: cover; width: 100%;">
+                    class="img-fluid rounded" style="object-fit: contain; width: 100%;">
             </div>
         </div>
     </section>

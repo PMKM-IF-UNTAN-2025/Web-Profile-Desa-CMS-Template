@@ -87,7 +87,7 @@
               <div class="card text-center border-0">
                 <div class="image-container position-relative p-3">
                   <img src="img/1.jpg" class="image-fluid rounded-circle" alt="Kepala Desa"
-                    style="height: 210px; width: 210px; object-fit: cover;">
+                    style="height: 210px; width: 210px; object-fit: contain;">
                 </div>
                 <div class="card-body" style="font-size: 15px;">
                   <p class="card-title text-danger fw-medium" id="kepala-desa">KEPALA DESA</p>
@@ -103,7 +103,7 @@
               <div class="card text-center border-0">
                 <div class="image-container position-relative p-3">
                   <img src="img/1.jpg" class="image-fluid rounded-circle" alt="Kepala Desa"
-                    style="height: 210px; width: 210px; object-fit: cover;">
+                    style="height: 210px; width: 210px; object-fit: contain;">
                 </div>
                 <div class="card-body" style="font-size: 15px;">
                   <p class="card-title text-danger fw-medium" id="sekretasis-desa">SEKRETARIS DESA</p>
@@ -121,7 +121,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kasi-pemerintahan">KASI PEMERINTAHAN</p>
@@ -137,7 +137,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kasi-pelayanan">KASI PELAYANAN</p>
@@ -152,7 +152,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kasi-kesejahteraan">KASI KESEJAHTERAAN</p>
@@ -166,7 +166,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kaur-perencanaan">KAUR PERENCANAAN</p>
@@ -180,7 +180,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kaur-keuangan">KAUR KEUANGAN</p>
@@ -194,7 +194,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kaur-umum">KAUR UMUM</p>
@@ -208,7 +208,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="operator">OPERATOR</p>
@@ -222,7 +222,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="staff-keuangan">STAFF KEUANGAN</p>
@@ -236,7 +236,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="staff-kearsipan">STAFF KEARSIPAN</p>
@@ -250,7 +250,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kepala-dusun-1">KEPALA DUSUN 1</p>
@@ -264,7 +264,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kepala-dusun-2">KEPALA DUSUN 2</p>
@@ -278,7 +278,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kepala-dusun-3">KEPALA DUSUN 3</p>
@@ -292,7 +292,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kepala-dusun-4">KEPALA DUSUN 4</p>
@@ -306,7 +306,7 @@
                 <div class="card text-center overflow-hidden border-0">
                   <div class="image-container position-relative p-3">
                     <img src="img/1.jpg" class="img-fluid rounded-circle" alt="Kepala Desa"
-                      style="height: 210px; width: 210px; object-fit: cover;">
+                      style="height: 210px; width: 210px; object-fit: contain;">
                   </div>
                   <div class="card-body" style="font-size: 15px;">
                     <p class="card-title text-danger fw-medium" id="kepala-dusun-5">KEPALA DUSUN 5</p>

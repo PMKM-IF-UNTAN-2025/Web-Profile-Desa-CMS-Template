@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Desa Perapakan</title>
+    <title>Dashboard - Desa {{session('nama_desa', 'Desa PMKM UNTAN')}}</title>
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('/image/Sambas Logo compress 300x300.png') }}">
     <link

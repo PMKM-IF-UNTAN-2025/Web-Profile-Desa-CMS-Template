@@ -116,13 +116,42 @@ class ProfildesaController
                 'jumlah_rt' => 'required',
                 'jumlah_rw' => 'required',
 
-                'peta_desa' => 'required',
-                'gambar_profiledesa' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+                'peta_desa' => [
+                    'nullable',
+                    function ($attribute, $value, $fail) use ($request) {
+                        // jika jenis_peta adalah foto, peta_desa harus berupa file gambar valid
+                        if ($request->input('jenis_peta') === 'foto') {
+                            if (! $request->hasFile('peta_desa')) {
+                                $fail('peta_desa harus berupa gambar ketika jenis peta adalah "foto".');
+                                return;
+                            }
+                            $file = $request->file('peta_desa');
+                            $ext = strtolower($file->getClientOriginalExtension());
+                            if (! in_array($ext, ['jpg', 'jpeg', 'png'])) {
+                                $fail('peta_desa harus berformat jpg, jpeg, atau png.');
+                            }
+                            if ($file->getSize() > 1 * 1024 * 1024) {
+                                $fail('Ukuran file peta_desa maksimal 1MB.');
+                            }
+                        } else {
+                            // jika bukan foto, pastikan bukan file dan bila ada nilainya berupa string (mis. path atau URL)
+                            if ($request->hasFile('peta_desa')) {
+                                $fail('peta_desa harus berupa teks ketika jenis peta bukan "foto".');
+                                return;
+                            }
+                            if (! is_null($value) && ! is_string($value)) {
+                                $fail('peta_desa harus berupa teks/url.');
+                            }
+                        }
+                    }
+                ],
+                'jenis_peta' => 'required',
+                'gambar_profiledesa' => 'nullable|image|mimes:jpg,jpeg,png|max:1024'
             ], [
                 'required' => ':attribute wajib diisi.',
                 'image' => ':attribute harus berupa gambar.',
                 'mimes' => ':attribute harus berformat jpg, jpeg, atau png.',
-                'max' => 'Ukuran file :attribute maksimal 2MB.'
+                'max' => 'Ukuran file :attribute maksimal 1MB.'
             ]);
 
             // Jika validasi gagal
@@ -141,7 +170,15 @@ class ProfildesaController
                 }
                 $validatedData['gambar_profiledesa'] = $request->file('gambar_profiledesa')->store('gambar_yang_tersimpan');
             }
-
+            if ($request->jenis_peta === 'foto' && $request->hasFile('peta_desa')) {
+                if ($request->oldPetaDesaFoto) {
+                    Storage::delete($request->oldPetaDesaFoto);
+                }
+                $validatedData['peta_desa'] = $request->file('peta_desa')->store('peta_desa_foto_tersimpan');
+            }
+            if ($request->has('luas_desa')) {
+                $validatedData['luas_desa'] = str_replace(',', '.', $request->luas_desa);
+            }
             // Update data profil desa
             $profildesa->update($validatedData);   
             if($profildesa){
