@@ -22,7 +22,6 @@
                 <!-- Image Content -->
                 @if($profiledesa)
                     <div class="col-lg-6">
-                        {{$profiledesa->gambar_profiledesa}}
                         @if($profiledesa->gambar_profiledesa)
                         <img src="{{ asset('storage/' . $profiledesa->gambar_profiledesa) }}" 
                             alt="Gambar Profil Desa" 
