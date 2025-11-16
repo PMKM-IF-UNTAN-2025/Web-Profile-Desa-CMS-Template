@@ -62,10 +62,11 @@
                         <p id="sejarah-full" class="text-muted d-none" style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
                             {!! $fullText !!}
                         </p>
-
+                        @if(strlen($fullText) > 1000)
                         <a href="javascript:void(0)" id="toggleSejarah" class="fw-bold" style="color:#286a59;">
                             Read more
                         </a>
+                        @endif
                     @else
                         <p class="text-muted">Data Sejarah Desa Belum Tersedia.</p>
                     @endif
